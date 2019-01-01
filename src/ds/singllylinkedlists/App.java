@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package linkedlists;
+package ds.singllylinkedlists;
 
 /**
  *
@@ -11,16 +11,13 @@ package linkedlists;
  */
 public class App {
     public static void main( String[] args ){
-        Node nodeA = new Node();
-        nodeA.data = 4;
+        SinglyLinkedList mylist = new SinglyLinkedList();
+        mylist.insertFirst(100);
+        mylist.insertFirst(50);
+        mylist.insertFirst(99);
+        mylist.insertFirst(88);
+        mylist.insertLast(999999);
         
-        Node nodeB = new Node();
-        nodeB.data = 3;
-        
-        Node nodeC = new Node();
-        nodeC.data = 7;
-        
-        Node nodeD = new Node();
-        nodeD.data =8;
+        mylist.displayList();
     }
 }
