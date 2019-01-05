@@ -2,12 +2,12 @@ package algo.linearsearch;
 
 public class App {
     public static void main( String[] args ){
-        
+        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 7, 9, 12, 18}, 18));
     }
     
-    public static int linearSearch( int [] a, int x ){
+    public static int binarySearch( int [] a, int x ){
         int p = 0;
-        int r = a.length;
+        int r = a.length-1;
         
         while( p <= r ){
             int q = ( p + r ) / 2;
@@ -15,6 +15,7 @@ public class App {
             else if( x > a[q] ) p = q + 1;
             else return q;
         }
+        return -1;
     }
 }
 
