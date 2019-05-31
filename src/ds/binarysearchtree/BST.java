@@ -237,7 +237,7 @@ public class BST {
 
     } 
     
-    // Intructor solution
+    // Intructor solutionZ
     public void displayTree() {
         Stack globalStack = new Stack();
         globalStack.push(root);
