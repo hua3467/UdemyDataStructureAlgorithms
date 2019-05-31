@@ -29,15 +29,17 @@ public class Client {
         
         BST newTree = new BST();
         int[] keyArr = new int[] { 10, 4, 20, 2, 5, 18, 22, 8, 17, 19, 21, 24, 9, 33 };
-        String[] valueArr = new String[] { "ten", "four", "twenty", "two", "five", "eighteen", "twenty-two", "eight", "seventeen", "nineteen", "twenty-one", "twenty-four", "nine", "thirty-three" };
+        String[] valueArr = new String[] { "10", "4", "20", "2", "5", "18", "22", "8", "17", "19", "21", "24", "9", "33" };
         
         for( int i = 0; i < keyArr.length; i++){
             newTree.insert(keyArr[i], valueArr[i]);
         }
         
-        System.out.println("Height: " + newTree.getHeight(newTree.getRoot()));
-        newTree.levelTraversal(newTree.getRoot());
-    }
+//        System.out.println("Height: " + newTree.getHeight(newTree.getRoot()));
+//        newTree.levelTraversal(newTree.getRoot());
+        newTree.printTree(newTree.getRoot());
+        newTree.displayTree();
+       
  
-    
+   } 
 }

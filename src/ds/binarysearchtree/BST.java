@@ -5,6 +5,9 @@
  */
 package ds.binarysearchtree;
 
+import java.util.Stack;
+
+
 /**
  *
  * @author aaronyang
@@ -81,6 +84,8 @@ public class BST {
         }
         
     }
+    
+    
     
     public boolean remove(int key){
         
@@ -182,11 +187,99 @@ public class BST {
         
         while(!q.isEmpty()){
             node = (Node)q.dequeue();
-            System.out.println(node.key);
+            System.out.println( node.key );
             if(node.leftChild != null)
                 q.enqueue(node.leftChild);
             if(node.rightChild != null)
                 q.enqueue(node.rightChild);
         }
     }
+    
+    public void printTree(Node node){
+        
+        Node placeHolder = new Node(0, "--");
+        Queue q = new LinkedQueue();
+        Queue q2 = new LinkedQueue();
+        
+        System.out.println("================================================================");
+        
+        if(node == null)
+            return;
+        
+        q.enqueue(node);
+        
+        for(int i = 0; i < 62; i++ ){
+            node = (Node)q.dequeue();
+            q2.enqueue(node);
+            
+            if(node.leftChild == null)
+                q.enqueue(placeHolder);
+            else
+                q.enqueue(node.leftChild);
+            
+            if(node.rightChild == null)
+                q.enqueue(placeHolder);
+            else
+                q.enqueue(node.rightChild);
+        }
+        
+        String str = "";
+        for(int i = 0; i < q2.size(); i++){
+            
+            str += ((Node)q2.dequeue()).value + " ";
+            
+            if(i == 0 || i == 2 || i == 6 || i == 14)   // this should be dynamically set according to the height of the tree.
+                str += "\n";
+        }
+        System.out.println(str);
+        
+        System.out.println("================================================================");
+
+    } 
+    
+    // Intructor solution
+    public void displayTree() {
+        Stack globalStack = new Stack();
+        globalStack.push(root);
+        int nBlanks = 32;
+        boolean isRowEmpty = false;
+        System.out.println("......................................................");
+        
+        while(isRowEmpty==false) {
+            Stack localStack = new Stack();
+            isRowEmpty = true;
+            for(int j=0; j<nBlanks; j++) {
+                System.out.print(" ");
+            }
+                
+            while(globalStack.isEmpty()==false) {
+                Node temp = (Node)globalStack.pop(); 
+                if(temp != null) {
+                    System.out.print(temp.key); 
+                    localStack.push(temp.leftChild); 
+                    localStack.push(temp.rightChild);
+                    if(temp.leftChild != null || temp.rightChild != null) {
+                        isRowEmpty = false; 
+                    }
+                } else {
+                    System.out.print("--"); 
+                    localStack.push(null); 
+                    localStack.push(null);
+                }
+                
+                for(int j=0; j<nBlanks*2-2; j++) {
+                    System.out.print(" ");
+                }
+            }
+            
+            System.out.println();
+            nBlanks = nBlanks/2;
+            
+            while(localStack.isEmpty()==false)
+                globalStack.push( localStack.pop() ); 
+            }
+        System.out.println( "......................................................");
+ 
+ }
+    
 }
